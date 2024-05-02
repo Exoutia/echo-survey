@@ -7,6 +7,8 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
+import { Skeleton } from "./ui/skeleton";
+import { Button } from "./ui/button";
 
 const Logo = () => {
   return (
@@ -19,13 +21,26 @@ const Logo = () => {
 const AuthButton = () => {
   return (
     <>
-      <ClerkLoading>Loading...</ClerkLoading>
+      <ClerkLoading>
+        <Skeleton className="size-10 rounded-full bg-gray-400" />
+      </ClerkLoading>
       <ClerkLoaded>
         <SignedOut>
-          <SignInButton />
+          <Button size="sm" asChild>
+            <SignInButton />
+          </Button>
         </SignedOut>
         <SignedIn>
-          <UserButton afterSignOutUrl="/" />
+          <div className="size-10 flex items-center justify-center">
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: { width: "40px", height: "40px" },
+                },
+              }}
+              afterSignOutUrl="/"
+            />
+          </div>
         </SignedIn>
       </ClerkLoaded>
     </>
