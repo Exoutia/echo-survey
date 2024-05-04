@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
+import ThemeProvider from "@/providers/theme-provider";
 
 const fontInter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,16 @@ const RootLayout = ({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={fontInter.className}>{children}</body>
+        <body className={fontInter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            storageKey="echo-survey-theme"
+            enableSystem
+          >
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
