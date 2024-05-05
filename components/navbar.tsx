@@ -7,10 +7,8 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import Link from "next/link";
-
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { Skeleton } from "./ui/skeleton";
+import { Button } from "./ui/button";
 
 const Logo = () => {
   return (
@@ -83,8 +81,7 @@ export const Navbar = () => {
         <Logo />
         <NavMenus />
       </div>
-      <div className="flex items-center justify-center gap-4">
-        <ThemeToggle />
+      <div>
         <AuthButton />
       </div>
     </header>
