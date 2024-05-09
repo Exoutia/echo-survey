@@ -59,6 +59,10 @@ const NavMenus = () => {
       label: "Protected",
       href: "/protected",
     },
+    {
+      label: "Dashboard",
+      href: "/dashboard"
+    }
   ];
 
   return (
