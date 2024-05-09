@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -18,9 +19,11 @@ const Home = () => {
           <CardDescription>Click here to Create a new form</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button size="sm" className="w-full">
-            Add
-          </Button>
+          <Link href="/create/">
+            <Button size="sm" className="w-full">
+              Add
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </div>
