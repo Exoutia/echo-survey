@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -6,13 +7,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import Link from "next/link";
+} from "@/components/ui/card";
 
-const Home = () => {
+const DashboardPage = () => {
   return (
     <div className="space-y-4">
-
       <Card className="p-5 m-5 max-w-[300px] max-h-[300px]">
         <CardHeader>
           <CardTitle>Add New Form</CardTitle>
@@ -30,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DashboardPage;
