@@ -1,51 +1,13 @@
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import Link from "next/link";
 
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { UserButton } from "@/components/user-button";
 
 const Logo = () => {
   return (
     <Link href="/">
       <h1 className="text-xl font-bold">E Survey</h1>
     </Link>
-  );
-};
-
-const AuthButton = () => {
-  return (
-    <>
-      <ClerkLoading>
-        <Skeleton className="size-10 rounded-full bg-gray-400" />
-      </ClerkLoading>
-      <ClerkLoaded>
-        <SignedOut>
-          <Button size="sm" asChild>
-            <SignInButton />
-          </Button>
-        </SignedOut>
-        <SignedIn>
-          <div className="size-10 flex items-center justify-center">
-            <UserButton
-              appearance={{
-                elements: {
-                  userButtonAvatarBox: { width: "40px", height: "40px" },
-                },
-              }}
-              afterSignOutUrl="/"
-            />
-          </div>
-        </SignedIn>
-      </ClerkLoaded>
-    </>
   );
 };
 
@@ -61,8 +23,8 @@ const NavMenus = () => {
     },
     {
       label: "Dashboard",
-      href: "/dashboard"
-    }
+      href: "/dashboard",
+    },
   ];
 
   return (
@@ -89,7 +51,7 @@ export const Navbar = () => {
       </div>
       <div className="flex items-center justify-center gap-4">
         <ThemeToggle />
-        <AuthButton />
+        <UserButton />
       </div>
     </header>
   );
