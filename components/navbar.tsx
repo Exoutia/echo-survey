@@ -34,7 +34,7 @@ const NavMenus = () => {
   ];
 
   return (
-    <div className="flex items-center gap-8">
+    <div className="hidden md:flex items-center gap-8">
       {navLinks.map((item, i) => (
         <Link
           key={i}
@@ -53,13 +53,13 @@ const NavMenus = () => {
 
 export const Navbar = () => {
   return (
-    <header className="h-16 sticky top-0 border-b flex items-center justify-between px-6 bg-background">
+    <header className="h-16 sticky top-0 z-20 border-b flex items-center justify-between px-4 md:px-6 bg-background">
       <div className="flex items-center gap-16">
         <Logo />
         <NavMenus />
       </div>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-2">
         <ThemeToggle />
         <UserButton />
       </div>

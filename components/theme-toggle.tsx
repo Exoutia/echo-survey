@@ -20,7 +20,7 @@ export const ThemeToggle = () => {
         <Button
           variant="outline"
           size="icon"
-          className="ring-offset-background focus-visible:ring-2 focus-visible:ring-muted-foreground focus-visible:ring-offset-1 size-10 rounded-full"
+          className="ring-offset-background focus-visible:ring-2 ring-offset-0 focus-visible:ring-muted-foreground focus-visible:ring-offset-0 size-10 rounded-full"
         >
           <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
