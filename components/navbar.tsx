@@ -28,8 +28,8 @@ const NavMenus = () => {
       href: "/about",
     },
     {
-      label: "Forms",
-      href: "/forms",
+      label: "Surveys",
+      href: "/surveys",
     },
   ];
 
