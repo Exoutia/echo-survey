@@ -24,9 +24,8 @@ const RootLayout = ({
         <body className={fontInter.className}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             storageKey="echo-survey-theme"
-            enableSystem
           >
             {children}
           </ThemeProvider>
