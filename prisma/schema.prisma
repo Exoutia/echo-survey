@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum QuestionType {
+  SHORT_ANSWER
+  PARAGRAPH
+  MULTIPLE_CHOICE
+  CHECKBOXES
+  DROPDOWN
+  FILE_UPLOAD
+  LINEAR_SCALE
+  DATE
+  TIME
+  DATE_TIME
+}
+
+model Question {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  questionText  String
+  description   String?
+  type          QuestionType @default(SHORT_ANSWER)
+  isRequired    Boolean? @default(false)
+
+  surveyId      String @db.ObjectId
+  answers       Answer[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  survey        Survey @relation(fields: [surveyId], references: [id])
+
+  @@index([surveyId])
+}
+
+model Answer {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  questionId    String @db.ObjectId
+  responseId    String @db.ObjectId
+
+  answerText    String
+
+  question      Question @relation(fields: [questionId], references: [id])
+  response      Response @relation(fields: [responseId], references: [id])
+
+  @@index([questionId])
+  @@index([responseId])
+}
+
+model Survey {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String
+  creatorId     String
+
+  questions     Question[]
+  responses     Response[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([creatorId])
+}
+
+model Response {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  surveyId      String @db.ObjectId
+  userId        String
+
+  answers       Answer[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  survey        Survey @relation(fields: [surveyId], references: [id])
+
+  @@index([userId])
+  @@index([surveyId])
+  @@unique([userId, surveyId])
+}
