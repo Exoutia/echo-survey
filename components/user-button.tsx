@@ -20,7 +20,7 @@ export const UserButton = () => {
   return (
     <>
       <ClerkLoading>
-        <Skeleton className="size-10 rounded-full bg-gray-400" />
+        <Skeleton className="size-[34px] rounded-full bg-gray-400" />
       </ClerkLoading>
       <ClerkLoaded>
         <SignedOut>
@@ -29,25 +29,15 @@ export const UserButton = () => {
           </Button>
         </SignedOut>
         <SignedIn>
-          <div className="size-10 flex items-center justify-center">
-            <ClerkUserButton
-              appearance={
-                theme === "dark"
-                  ? {
-                      elements: {
-                        userButtonAvatarBox: { width: "40px", height: "40px" },
-                      },
-                      baseTheme: dark,
-                    }
-                  : {
-                      elements: {
-                        userButtonAvatarBox: { width: "40px", height: "40px" },
-                      },
-                    }
-              }
-              afterSignOutUrl="/"
-            />
-          </div>
+          <ClerkUserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: { width: "34px", height: "34px" },
+              },
+              baseTheme: theme === "dark" ? dark : undefined,
+            }}
+            afterSignOutUrl="/"
+          />
         </SignedIn>
       </ClerkLoaded>
     </>
