@@ -4,7 +4,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Navbar />
-      <div className="px-6 py-4">{children}</div>
+      <div className="h-[calc(100vh-4rem)] px-4 md:px-6 py-4 overflow-y-auto">
+        {children}
+      </div>
     </div>
   );
 };
